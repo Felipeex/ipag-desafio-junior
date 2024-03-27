@@ -9,6 +9,30 @@ const equalInput = document.getElementsByClassName("equal")[0];
 let lastOperation;
 
 for (const button of operationsInputs) {
+  handleButtonFocused(button);
+}
+
+export function setOperator(operatorClass) {
+  const operatorInput = document.getElementsByClassName(operatorClass)[0];
+  setButtonFocused(operatorInput);
+}
+
+export function removeOperator() {
+  if (lastOperation && lastOperation.className.includes("focused"))
+    lastOperation.classList.remove("focused");
+
+  lastOperation = null;
+}
+
+function setButtonFocused(button) {
+  if (lastOperation && lastOperation.className.includes("focused"))
+    lastOperation.classList.remove("focused");
+
+  lastOperation = button;
+  lastOperation.classList.add("focused");
+}
+
+function handleButtonFocused(button) {
   button.addEventListener("click", () => {
     if (lastOperation && lastOperation.className.includes("focused"))
       lastOperation.classList.remove("focused");

@@ -1,30 +1,49 @@
 import "./operations.js";
+import { setOperator, removeOperator } from "./operations.js";
 
-const accepttedInputKeys = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "0",
-  /* "+",
-  "-",
-  "=",
-  "/",
-  "x", */
-];
+const accepttedInputKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const accepttedEspecialKeys = ["+", "-", "=", "/", "x", "Backspace", "Enter"];
 
 /* Colocar focus automaticamente ao input */
 const numberInput = document.getElementsByClassName("input-number")[0];
 numberInput.focus();
 
 /* Verificar teclas clicadas, e fazer uma ação */
-numberInput.onkeydown = (rest) => {
-  if (accepttedInputKeys.includes(rest.key)) {
+numberInput.onkeydown = (data) => {
+  /* Poder digitar uma quantidade ilimitada por operação, e se esse digito é um número */
+  if (numberInput.value.length >= 12 && accepttedInputKeys.includes(data.key))
+    return false;
+
+  if (
+    accepttedInputKeys.includes(data.key) ||
+    accepttedEspecialKeys.includes(data.key)
+  ) {
+    /* Atalhos de teclado para fazer operações */
+    switch (data.key) {
+      case "+":
+        setOperator("addition");
+        return false;
+      case "-":
+        setOperator("subtraction");
+        return false;
+      case "=":
+        setOperator("equal");
+        return false;
+      case "Enter":
+        setOperator("equal");
+        return false;
+      case "/":
+        setOperator("division");
+        return false;
+      case "x":
+        setOperator("multiplication");
+        return false;
+    }
+
+    /* Remover operador quando apertar delete, sem nenhum número no input */
+    if (numberInput.value.length <= 0 && data.key === "Backspace")
+      removeOperator();
+
     return true;
   } else {
     return false;
