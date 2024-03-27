@@ -3,6 +3,7 @@
 # Links úteis e pesquisa
 
 - Usado no CSS para remover as setas padrões do input number [link da documentação](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
+- Remover cor do curso [link da documentação](https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color)
 
 # 🎨 Designer
 
