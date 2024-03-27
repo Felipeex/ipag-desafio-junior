@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
 
-  background: #17171c;
+  background: rgb(23, 23, 28);
   font-family: "Work Sans", sans-serif;
 
   height: 100vh;
@@ -19,7 +19,7 @@ body {
   height: 80px;
 
   font-size: 63.2px;
-  color: #fff;
+  color: rgb(255, 255, 255);
 
   text-align: center;
   caret-color: transparent;
@@ -27,6 +27,36 @@ body {
 
 .input-number::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.operation-buttons {
+  position: absolute;
+  bottom: 40px;
+
+  display: flex;
+  gap: 27px;
+}
+
+.focused {
+  background: #4e505f !important;
+}
+
+.operation-buttons button {
+  all: unset;
+  transition: background-color 400ms;
+
+  font-size: 32px;
+  color: rgb(255, 255, 255);
+
+  padding: 17px 26.2px;
+  background: rgb(75, 94, 252);
+  border-radius: 24px;
+
+  cursor: pointer;
+}
+
+.operation-buttons button:hover {
+  background: #0722ff;
 }
 
 /* Remove input arrown on Chrome, Safari, Edge, Opera */
