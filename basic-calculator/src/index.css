@@ -59,6 +59,17 @@ body {
   background: #0722ff;
 }
 
+.input-container {
+  position: relative;
+}
+
+.input-container label {
+  position: absolute;
+  right: 0;
+
+  color: #fff;
+}
+
 /* Remove input arrown on Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

@@ -1,15 +1,15 @@
 import "./operations.js";
-import { setOperator, removeOperator } from "./operations.js";
+/* Colocar focus automaticamente ao input */
+let numberInput = document.getElementsByClassName("input-number")[0];
+numberInput.focus();
+import { setOperator, removeOperator, sum } from "./operations.js";
 
 const accepttedInputKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 const accepttedEspecialKeys = ["+", "-", "=", "/", "x", "Backspace", "Enter"];
 
-/* Colocar focus automaticamente ao input */
-const numberInput = document.getElementsByClassName("input-number")[0];
-numberInput.focus();
-
 /* Verificar teclas clicadas, e fazer uma ação */
 numberInput.onkeydown = (data) => {
+  console.log("sum", sum);
   /* Poder digitar uma quantidade ilimitada por operação, e se esse digito é um número */
   if (numberInput.value.length >= 12 && accepttedInputKeys.includes(data.key))
     return false;

@@ -1,15 +1,12 @@
-const operationsInputs = document.getElementsByClassName("operation-button");
-const additionInput = document.getElementsByClassName("addition")[0];
-const subtractionInput = document.getElementsByClassName("subtraction")[0];
-const divisionInput = document.getElementsByClassName("division")[0];
-const multiplicationInput =
-  document.getElementsByClassName("multiplication")[0];
-const equalInput = document.getElementsByClassName("equal")[0];
+let numberInput = document.getElementsByClassName("input-number")[0];
 
-let lastOperation;
+const operationsInputs = document.getElementsByClassName("operation-button");
+export let lastOperation = null;
+let lastOperationUntilEqual = null;
+export let sum = 0;
 
 for (const button of operationsInputs) {
-  handleButtonFocused(button);
+  handleButtonFocusedWithClick(button);
 }
 
 export function setOperator(operatorClass) {
@@ -22,22 +19,51 @@ export function removeOperator() {
     lastOperation.classList.remove("focused");
 
   lastOperation = null;
+  lastOperationUntilEqual = null;
+  sum = 0;
 }
 
 function setButtonFocused(button) {
+  handleLastOperation(button);
+  handleSum(button.classList[1], Number(numberInput.value));
+  numberInput.value = "";
+
+  if (button.classList[1] === "equal") numberInput.value = sum;
+}
+
+function handleButtonFocusedWithClick(button) {
+  button.addEventListener("click", () => {
+    handleLastOperation(button);
+    handleSum(button.classList[1], Number(numberInput.value));
+    numberInput.value = "";
+
+    if (button.classList[1] === "equal") numberInput.value = sum;
+  });
+}
+
+function handleSum(operation, value) {
+  switch (operation) {
+    case "addition":
+      sum += value;
+      break;
+    case "equal":
+      const lastOperationUntilEqualClass = lastOperationUntilEqual.classList[1];
+      handleSum(lastOperationUntilEqualClass, value);
+      break;
+  }
+}
+
+function handleLastOperation(button) {
   if (lastOperation && lastOperation.className.includes("focused"))
     lastOperation.classList.remove("focused");
 
+  if (
+    button.classList[1] === "equal" &&
+    lastOperation.classList[1] !== "equal"
+  ) {
+    lastOperationUntilEqual = lastOperation;
+  }
+
   lastOperation = button;
   lastOperation.classList.add("focused");
-}
-
-function handleButtonFocused(button) {
-  button.addEventListener("click", () => {
-    if (lastOperation && lastOperation.className.includes("focused"))
-      lastOperation.classList.remove("focused");
-
-    lastOperation = button;
-    lastOperation.classList.add("focused");
-  });
 }
