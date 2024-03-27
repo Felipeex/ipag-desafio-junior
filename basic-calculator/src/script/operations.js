@@ -1,9 +1,8 @@
 let numberInput = document.getElementsByClassName("input-number")[0];
-
 const operationsInputs = document.getElementsByClassName("operation-button");
-export let lastOperation = null;
+let sum = 0;
+let lastOperation = null;
 let lastOperationUntilEqual = null;
-export let sum = 0;
 
 for (const button of operationsInputs) {
   handleButtonFocusedWithClick(button);
