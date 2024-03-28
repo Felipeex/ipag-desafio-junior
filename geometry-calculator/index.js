@@ -26,8 +26,7 @@ prompt.question(
 
 function calculateSquare() {
   prompt.question("Forneça lado do Quadrado (EX: 1): ", (response) => {
-    const splittedResponse = response.slice(" ");
-    const side = splittedResponse[0];
+    const side = Number(response);
 
     if (!side) console.log("Dados incorretos...");
     console.log(`Sua área é ${side * side}`);
@@ -39,9 +38,9 @@ function calculateRectangle() {
   prompt.question(
     "Forneça base e altura do Retângulo (EX: 1 2): ",
     (response) => {
-      const splittedResponse = response.slice(" ");
-      const base = splittedResponse[0];
-      const height = splittedResponse[0];
+      const splittedResponse = response.split(" ");
+      const base = Number(splittedResponse[0]);
+      const height = Number(splittedResponse[1]);
 
       if (!base || !height) console.log("Dados incorretos...");
       console.log(`Sua área é ${base * height}`);
@@ -54,9 +53,9 @@ function calculateTriangle() {
   prompt.question(
     "Forneça base e altura do Triângulo (EX: 1 2): ",
     (response) => {
-      const splittedResponse = response.slice(" ");
-      const base = splittedResponse[0];
-      const height = splittedResponse[0];
+      const splittedResponse = response.split(" ");
+      const base = Number(splittedResponse[0]);
+      const height = Number(splittedResponse[1]);
 
       if (!base || !height) console.log("Dados incorretos...");
       console.log(`Sua área é ${(base * height) / 2}`);
@@ -68,8 +67,7 @@ function calculateTriangle() {
 function calculateCircle() {
   prompt.question("Forneça o raio Circulo (EX: 1): ", (response) => {
     const PI_VALUE = 3.14159265359;
-    const splittedResponse = response.slice(" ");
-    const radius = splittedResponse[0];
+    const radius = Number(response);
 
     if (!radius) console.log("Dados incorretos...");
     console.log(`Sua área é ${(PI_VALUE * (radius * radius)).toFixed(1)}`);
