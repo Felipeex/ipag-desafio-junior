@@ -1,11 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap");
+
 body {
   margin: 0;
   padding: 0;
 
   background: rgb(23, 23, 28);
+  font-family: "Rubik", sans-serif;
 
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.list {
+  min-width: 300px;
+
+  background: #202027;
+  padding: 20px;
+
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.list > span {
+  font-weight: 400;
+  font-size: 18px;
+
+  color: #fff;
+}
+
+.list .task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.list .task input[type="text"] {
+  all: unset;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+
+  flex: 1;
+}
+
+.list .task input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+
+  width: 24px;
+  height: 24px;
+
+  border: 1.5px solid #b4b4b4;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.list .task input[type="checkbox"]:checked::before {
+  position: absolute;
+  content: "X";
+
+  color: #b4b4b4;
+  font-family: "Rubik", sans-serif;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list > button {
+  all: unset;
+
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+
+  cursor: pointer;
 }
