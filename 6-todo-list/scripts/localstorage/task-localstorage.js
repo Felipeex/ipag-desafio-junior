@@ -8,8 +8,23 @@ export class TaksLocalStorage {
     const getAllTasks = this.parse(localStorage.getItem("tasks"));
     if (!getAllTasks) return [];
 
-    return getAllTasks;
+    return getAllTasks.sort((a, b) => {
+      if (a.taskId > b.taskId) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
   }
+
+  getById(id) {
+    const allTasks = this.getMany();
+    const task = allTasks.find((task) => task.taskId === id);
+
+    if (!task) return null;
+    return task;
+  }
+
   create(props) {
     const allTasks = this.getMany();
     allTasks.push(props);
@@ -19,9 +34,12 @@ export class TaksLocalStorage {
 
   edit(props) {
     const allTasks = this.getMany();
-    allTasks.pop();
+    const filteredTasks = allTasks.filter(
+      (task) => task.taskId !== props.taskId
+    );
 
-    taskToEdit = props;
+    filteredTasks.push(props);
+    localStorage.setItem("tasks", this.compose(filteredTasks));
   }
 
   compose(tasks) {
