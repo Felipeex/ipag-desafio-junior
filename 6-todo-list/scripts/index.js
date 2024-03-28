@@ -10,6 +10,7 @@ const taskList = document.getElementsByClassName("tasks")[0];
 
   tasks.map((task) => {
     mountTask(task);
+    watchedEdit(task);
   });
 })();
 
@@ -43,5 +44,18 @@ function createNewTask() {
     taskId,
     status: "pendente",
     description: "",
+  });
+}
+
+function watchedEdit({ taskId }) {
+  const input = document.getElementById(`text-${taskId}`);
+  const checkbox = document.getElementById(`checkbox-${taskId}`);
+
+  input.addEventListener("keydown", (data) => {
+    console.log("alteração input: ", taskId, input.value);
+  });
+
+  checkbox.addEventListener("change", (data) => {
+    console.log("alteração checkbox: ", taskId, data.srcElement.checked);
   });
 }
