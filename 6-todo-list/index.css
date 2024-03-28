@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background: rgb(23, 23, 28);
+
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
