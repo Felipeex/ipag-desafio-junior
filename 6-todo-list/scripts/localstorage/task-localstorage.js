@@ -17,7 +17,12 @@ export class TaksLocalStorage {
     localStorage.setItem("tasks", this.compose(allTasks));
   }
 
-  delete() {}
+  edit(props) {
+    const allTasks = this.getMany();
+    allTasks.pop();
+
+    taskToEdit = props;
+  }
 
   compose(tasks) {
     return JSON.stringify(tasks);
