@@ -1,5 +1,3 @@
-# Calculadora Básica
-
 ## Atalhos e usabilidade
 
 - Você poderá usar os atalhos do teclado como `-`, `+`, `/`, `x`, `=` para realizar operações.
