@@ -46,8 +46,10 @@ function handleSum(operation, value) {
       sum += value;
       break;
     case "equal":
-      const lastOperationUntilEqualClass = lastOperationUntilEqual.classList[1];
-      handleSum(lastOperationUntilEqualClass, value);
+      handleSum(
+        lastOperationUntilEqual && lastOperationUntilEqual.classList[1],
+        value
+      );
       break;
   }
 }
@@ -57,7 +59,9 @@ function handleLastOperation(button) {
     lastOperation.classList.remove("focused");
 
   if (
+    button &&
     button.classList[1] === "equal" &&
+    lastOperation &&
     lastOperation.classList[1] !== "equal"
   ) {
     lastOperationUntilEqual = lastOperation;
