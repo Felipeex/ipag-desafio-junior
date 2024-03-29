@@ -1,8 +1,9 @@
 import "./operations.js";
+import { setOperator, removeOperator } from "./operations.js";
+
 /* Colocar focus automaticamente ao input */
 let numberInput = document.getElementsByClassName("input-number")[0];
 numberInput.focus();
-import { setOperator, removeOperator } from "./operations.js";
 
 const accepttedInputKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 const accepttedEspecialKeys = ["+", "-", "=", "/", "x", "Backspace", "Enter"];

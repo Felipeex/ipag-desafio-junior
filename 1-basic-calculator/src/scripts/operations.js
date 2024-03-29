@@ -1,5 +1,5 @@
-let numberInput = document.getElementsByClassName("input-number")[0];
 const operationsInputs = document.getElementsByClassName("operation-button");
+let numberInput = document.getElementsByClassName("input-number")[0];
 let sum = 0;
 let lastOperation = null;
 let lastOperationUntilEqual = null;
@@ -28,9 +28,7 @@ function setButtonFocused(button) {
 
   if (button.classList[1] !== "equal") {
     lastOperationUntilEqual = button.classList[1];
-    if (!isNotFirstOperation) {
-      sum += Number(numberInput.value);
-    }
+    if (!isNotFirstOperation) sum += Number(numberInput.value);
 
     numberInput.value = "";
     isNotFirstOperation = true;
@@ -47,9 +45,6 @@ function setButtonFocused(button) {
         break;
       case "multiplication":
         sum *= Number(numberInput.value);
-        break;
-
-      default:
         break;
     }
 
