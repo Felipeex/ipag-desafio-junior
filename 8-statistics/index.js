@@ -11,6 +11,7 @@ const salesFiles = readFileSync(`${__dirname}/sales.csv`, {
 /* Separando itens na quebra de linha, para ficar me formato de coluna */
 const splitInColumns = salesFiles.split("\r\n");
 
+const countries = [];
 const regions = [];
 const types = [];
 const sales = [];
@@ -21,6 +22,7 @@ for (const colunm of splitInColumns) {
   const splitInInformations = colunm.split(",");
   /* Pegando cada informação pelo indice */
   const region = splitInInformations[0];
+  const country = splitInInformations[1];
   const itemType = splitInInformations[2];
   const unitsSold = splitInInformations[8];
   const totalRevenue = splitInInformations[11];
@@ -31,9 +33,14 @@ for (const colunm of splitInColumns) {
   if (!regions.find((otherRegion) => otherRegion === region))
     regions.push(region);
 
+  /* Anotando todas regiões sem repetir */
+  if (!countries.find((otherCountry) => otherCountry === country))
+    countries.push(country);
+
   types.push(itemType);
   sales.push({
     region,
+    country,
     itemType,
     unitsSold,
     totalRevenue,
@@ -81,13 +88,66 @@ function SalesPerTypeOfProductsAndRegion() {
       );
 
       let TotalUnitsSoldPerRegion = 0;
-
       for (const salePerType of findSalesPerTypeOnRegion) {
         TotalUnitsSoldPerRegion += Number(salePerType.unitsSold);
       }
 
       console.log(`- ${type} = ${TotalUnitsSoldPerRegion} Vendas`);
     }
+  }
+}
+
+function typeOfProductsWithMoreRevenuePerCountry() {
+  for (const country of countries) {
+    const findSalesInCountry = sales.filter((sale) => sale.country === country);
+
+    const typesInCountry = [];
+    for (const sale of findSalesInCountry) {
+      if (!typesInCountry.find((type) => type === sale.itemType))
+        typesInCountry.push(sale.itemType);
+    }
+
+    let totalRenuvePerTypeInCountry = [];
+    for (const type of typesInCountry) {
+      const findSalesPerTypeOnRegion = findSalesInCountry.filter(
+        (sale) => sale.itemType === type
+      );
+
+      let TotalRenuvePerType = 0;
+      for (const salePerType of findSalesPerTypeOnRegion) {
+        TotalRenuvePerType += Number(salePerType.unitsSold);
+      }
+
+      if (totalRenuvePerTypeInCountry) {
+        totalRenuvePerTypeInCountry = [
+          ...totalRenuvePerTypeInCountry,
+          {
+            type,
+            TotalRenuvePerType,
+          },
+        ];
+      } else {
+        totalRenuvePerTypeInCountry = [
+          {
+            type,
+            TotalRenuvePerType,
+          },
+        ];
+      }
+    }
+
+    let biggerRenuveType = null;
+    let biggerRenuveValue = 0;
+    totalRenuvePerTypeInCountry.forEach(({ type, TotalRenuvePerType }) => {
+      if (TotalRenuvePerType > biggerRenuveValue) {
+        biggerRenuveType = type;
+        biggerRenuveValue = TotalRenuvePerType;
+      }
+    });
+
+    console.log(
+      `${country}\n - Tipo: ${biggerRenuveType}\n - Receita: ${biggerRenuveValue}`
+    );
   }
 }
 
@@ -103,8 +163,10 @@ function SalesPerTypeOfProductsAndRegion() {
           SalesPerTypeOfProductsAndRegion();
           break;
         case 3:
+          typeOfProductsWithMoreRevenuePerCountry();
           break;
       }
+      prompt.close();
     }
   );
 })();
