@@ -8,6 +8,7 @@ const prompt = readline.createInterface({
 const salesFiles = readFileSync(`${__dirname}/sales.csv`, {
   encoding: "utf-8",
 });
+
 /* Separando itens na quebra de linha, para ficar me formato de coluna */
 const splitInColumns = salesFiles.split("\r\n");
 
