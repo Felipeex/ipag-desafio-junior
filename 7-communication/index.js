@@ -89,7 +89,7 @@ function choseControl() {
   prompt.question(
     `Escolha um dos controles remotos (EX: 1): ${communation.Controls.map(
       ({ id, model }) => {
-        return `\n ${id} - Controle ${model}`;
+        return `\n${id} - Controle ${model}`;
       }
     ).join("")}\n`,
     (response) => {
@@ -103,8 +103,10 @@ choseControl();
 function choseTv() {
   prompt.question(
     `Escolha uma tv para comunicação (EX: 1): ${communation.Tvs.map(
-      ({ id, model }) => {
-        return `\n ${id} - Tv ${model}`;
+      ({ id, model, isOn }) => {
+        return `\n${id} - Tv ${model} (Status: ${
+          isOn ? "Ligada" : "Desligada"
+        })`;
       }
     ).join("")}\n`,
     (response) => {
