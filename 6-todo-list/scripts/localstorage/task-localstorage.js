@@ -42,6 +42,13 @@ export class TaksLocalStorage {
     localStorage.setItem("tasks", this.compose(filteredTasks));
   }
 
+  delete(id) {
+    const allTasks = this.getMany();
+    const filteredTasks = allTasks.filter((task) => task.taskId !== id);
+
+    localStorage.setItem("tasks", this.compose(filteredTasks));
+  }
+
   compose(tasks) {
     return JSON.stringify(tasks);
   }
