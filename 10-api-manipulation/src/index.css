@@ -15,6 +15,11 @@ body {
   flex-direction: column;
 }
 
+main {
+  max-width: 790px;
+  width: 80vw;
+}
+
 .loading {
   height: 100vh;
   display: flex;
@@ -64,4 +69,30 @@ body {
   font-size: 15px;
 
   line-height: 30px;
+}
+
+.contributions {
+  width: 100%;
+
+  object-fit: cover;
+  margin-top: 22px;
+}
+
+.repos {
+  padding: 16px;
+
+  border: 1px solid #2f2f38;
+  border-radius: 8px;
+}
+
+.title_repos {
+  margin-top: 46px;
+  margin-bottom: 16px;
+  color: #fff;
+
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.repo {
 }
