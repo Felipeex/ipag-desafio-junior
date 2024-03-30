@@ -1,6 +1,6 @@
 import { languagesColors } from "../utils/laguages-colors.js";
 
-const githubProfile = "gbdev13";
+const githubProfile = "felipeex";
 const githubApiUrl = "https://api.github.com";
 
 const headers = {

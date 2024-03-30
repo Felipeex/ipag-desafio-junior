@@ -9,4 +9,4 @@ node index.js
 
 # Links úteis e pesquisa
 
-- Usei uma biblioteca interna do node, para fazer promts [link da documentação](https://nodejs.org/en/learn/command-line/accept-input-from-the-command-line-in-nodejs)
+- Usei uma biblioteca interna do node, para fazer promts [documentação](https://nodejs.org/en/learn/command-line/accept-input-from-the-command-line-in-nodejs)

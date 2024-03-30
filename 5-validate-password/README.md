@@ -9,5 +9,5 @@ node index.js
 
 # Links úteis e pesquisa
 
-- Validar regex [link do validador](https://regex101.com/)
-- Usei uma biblioteca interna do node, para fazer promts [link da documentação](https://nodejs.org/en/learn/command-line/accept-input-from-the-command-line-in-nodejs)
+- Validar regex [validador](https://regex101.com/)
+- Usei uma biblioteca interna do node, para fazer promts [documentação](https://nodejs.org/en/learn/command-line/accept-input-from-the-command-line-in-nodejs)
