@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://cdn.discordapp.com/attachments/1185063275055038554/1223442783310839969/contributions.png?ex=6619dee2&is=660769e2&hm=700a318c1d6254812933c677ef87a592194cdcf900b9dc49eeaf7d3a969037d8&">
-p>
+<p align="center"><img src="https://cdn.discordapp.com/attachments/1185063275055038554/1223442783310839969/contributions.png?ex=6619dee2&is=660769e2&hm=700a318c1d6254812933c677ef87a592194cdcf900b9dc49eeaf7d3a969037d8&"><p/>
 
 # 🎨 Designer
 
